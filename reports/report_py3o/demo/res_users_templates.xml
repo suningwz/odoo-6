@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <record id="res_user_py3o_xls" model="ir.actions.report">
+        <field name="name">Res-User-XLS</field>
+        <field name="model">res.users</field>
+        <field name="report_name">res.user.xls</field>
+        <field name="report_type">py3o</field>
+        <field name="py3o_filetype">xls</field>
+        <field name="module">report_py3o</field>
+        <field name="py3o_template_fallback">demo/res_users_xls.ods</field>
+        <field name="binding_model_id" ref="report_py3o.model_res_users"/>
+    </record>
+
+    <record id="res_user_py3o_pdf" model="ir.actions.report">
+      <field name="name">Res-User-PDF</field>
+      <field name="model">res.users</field>
+      <field name="report_name">res.user.df</field>
+      <field name="report_type">py3o</field>
+      <field name="py3o_filetype">pdf</field>
+      <field name="module">report_py3o</field>
+      <field name="py3o_template_fallback">demo/res_users_pdf.odt</field>
+      <field name="binding_model_id" ref="report_py3o.model_res_users"/>
+    </record>
+
+ </odoo>
