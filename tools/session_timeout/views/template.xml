@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" name="session timeout js backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/session_timeout/static/src/js/abstract_view.js"/>
+        </xpath>
+    </template>
+</odoo>
