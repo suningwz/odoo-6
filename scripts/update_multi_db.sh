@@ -26,14 +26,22 @@ odoo_config_file="/home/xmars/dev/odoo/conf/kmv_dev.conf" # don't put -u option 
 odoo_custom_addons_path="/home/xmars/dev/odoo/customaddons"
 is_git_repo="yes" # custom addons folder is the git repo or not
 
+function print_multi_asterisk() {
+  echo ""
+  s=$(printf "%-30s" "*")
+  echo "${s// /*}"
+  echo ""
+}
+
 # ==========================================================================================
 # ======================= 0. Pull code to custom add-ons folder ============================
 # ==========================================================================================
 if [ $is_git_repo == 'yes' ]; then
   cd $odoo_custom_addons_path || return
   git config credential.helper store
-  echo 'Pulling the latest code from the repo'
+  echo -e '\nPulling the latest code from the repo'
   git pull
+  print_multi_asterisk
 fi
 
 # ==========================================================================================
@@ -104,10 +112,10 @@ for db in "${list_db[@]}"; do
       exit 1
     fi
 
-    printf '.'
     attempt_counter=$(($attempt_counter + 1))
     sleep 5
   done
+  print_multi_asterisk
 
 done
 
@@ -126,4 +134,11 @@ fi
 # remove option db_name to load full databases
 sed -i "s/.*db_name.*//" $odoo_config_file
 service $odoo_service_name restart
-echo "All done, good luck and have a nice day, Brooooooo!"
+
+print_multi_asterisk
+echo -e "All done, good luck and have a nice day, \tB"
+echo -e "\t\t\t\t\t\t  R"
+echo -e "\t\t\t\t\t\t    ooooooo"
+echo -e "\t\t\t\t\t\t    o     o"
+echo -e "\t\t\t\t\t\t    o     o"
+echo -e "\t\t\t\t\t\t    ooooooo"
