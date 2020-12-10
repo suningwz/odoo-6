@@ -32,6 +32,7 @@ is_git_repo="yes" # custom addons folder is the git repo or not
 if [ $is_git_repo == 'yes' ]; then
   cd $odoo_custom_addons_path || return
   git config credential.helper store
+  echo 'Pulling the latest code from the repo'
   git pull
 fi
 
@@ -92,6 +93,7 @@ for db in "${list_db[@]}"; do
     echo "" >>$odoo_config_file
     echo $db_name >>$odoo_config_file
   fi
+  echo "Updating database ${db} ..."
   service $odoo_service_name restart
   attempt_counter=0
   max_attempts=5
@@ -124,3 +126,4 @@ fi
 # remove option db_name to load full databases
 sed -i "s/.*db_name.*//" $odoo_config_file
 service $odoo_service_name restart
+echo "All done, good luck and have a nice day, Brooooooo!"
